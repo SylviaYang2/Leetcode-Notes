@@ -1,3 +1,5 @@
+import javax.swing.tree.TreeNode;
+
 /*
  * @lc app=leetcode id=98 lang=java
  *
@@ -21,21 +23,40 @@
  * }
  */
 class Solution {
-    public boolean isValidBST(TreeNode root) {
-        return isValidBST(root, null, null);
-    }
+    // method 1
+    // public boolean isValidBST(TreeNode root) {
+    // return isValidBST(root, null, null);
+    // }
 
-    private boolean isValidBST(TreeNode root, TreeNode min, TreeNode max) {
+    // private boolean isValidBST(TreeNode root, TreeNode min, TreeNode max) {
+    // if (root == null) {
+    // return true;
+    // }
+    // if (min != null && min.val >= root.val) {
+    // return false;
+    // }
+    // if (max != null && max.val <= root.val) {
+    // return false;
+    // }
+    // return isValidBST(root.left, min, root) && isValidBST(root.right, root, max);
+    // }
+
+    // Method 2
+    long pre = Long.MIN_VALUE;
+
+    public boolean isValidBST(TreeNode root) {
         if (root == null) {
             return true;
         }
-        if (min != null && min.val >= root.val) {
+        if (!isValidBST(root.left)) {
             return false;
         }
-        if (max != null && max.val <= root.val) {
+        if (root.val <= pre) {
             return false;
         }
-        return isValidBST(root.left, min, root) && isValidBST(root.right, root, max);
+        pre = root.val;
+
+        return isValidBST(root.right);
     }
 }
 // @lc code=end
