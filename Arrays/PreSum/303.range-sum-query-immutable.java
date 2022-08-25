@@ -1,5 +1,3 @@
-import javax.print.attribute.standard.PresentationDirection;
-
 /*
  * @lc app=leetcode id=303 lang=java
  *
