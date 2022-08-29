@@ -23,11 +23,15 @@ class Solution {
         ListNode slow = head, fast = head;
         while (fast != null) {
             if (slow.val != fast.val) {
+                // nums[slow] = nums[fast];
                 slow.next = fast;
+                // slow++;
                 slow = slow.next;
             }
+            // fast++
             fast = fast.next;
         }
+        // 断开与后面重复元素的连接
         slow.next = null;
         return head;
     }
