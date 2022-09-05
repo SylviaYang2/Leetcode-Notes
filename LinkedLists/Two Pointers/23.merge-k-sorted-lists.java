@@ -20,28 +20,28 @@ import java.util.PriorityQueue;
 // @lc code=start
 class Solution {
     // Method 1: using Priority Queue
-    // public ListNode mergeKLists(ListNode[] lists) {
-    // PriorityQueue<ListNode> queue = new PriorityQueue<>((a, b) -> a.val - b.val);
-    // ListNode dummy = new ListNode(-1);
-    // ListNode p = dummy;
+    public ListNode mergeKLists(ListNode[] lists) {
+        PriorityQueue<ListNode> queue = new PriorityQueue<>((a, b) -> a.val - b.val);
+        ListNode dummy = new ListNode(-1);
+        ListNode p = dummy;
 
-    // for (ListNode node : lists) {
-    // if (node != null) {
-    // queue.offer(node);
-    // }
-    // }
+        for (ListNode node : lists) {
+            if (node != null) {
+                queue.offer(node);
+            }
+        }
 
-    // while (!queue.isEmpty()) {
-    // ListNode cur = queue.poll();
-    // p.next = cur;
-    // if (cur.next != null) {
-    // queue.offer(cur.next);
-    // }
-    // p = p.next;
-    // }
+        while (!queue.isEmpty()) {
+            ListNode cur = queue.poll();
+            p.next = cur;
+            if (cur.next != null) {
+                queue.offer(cur.next);
+            }
+            p = p.next;
+        }
 
-    // return dummy.next;
-    // }
+        return dummy.next;
+    }
 
     // Method 2: Merge lists by pairs
     public ListNode mergeKLists(ListNode[] lists) {
