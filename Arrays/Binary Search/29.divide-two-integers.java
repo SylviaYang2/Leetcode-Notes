@@ -56,25 +56,20 @@ class Solution {
 
         // 由于x/y的结果肯定在[0,x]范围内，所以对x使用二分法
         long left = 0, right = x;
+        long ans = 0;
         while (left < right) {
-            // long mid = left + right + 1 >> 1;
-
-            // if (mul(mid, y) <= x) {
-            // left = mid;
-            // } else {
-            // right = mid - 1;
-            // }
             long mid = left + ((right - left) >> 1);
 
             if (mul(mid, y) <= x) {
                 left = mid + 1;
+                ans = mid;
             } else {
                 right = mid;
             }
         }
 
-        // return isNeg ? (int) -(right) : (int) (right);
-        return isNeg ? (int) -(right - 1) : (int) (right - 1);
+        // return isNeg ? (int) -(right - 1) : (int) (right - 1);
+        return isNeg ? (int) -(ans) : (int) (ans);
     }
 
     private long mul(long x, long y) {
