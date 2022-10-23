@@ -30,7 +30,8 @@ class Solution {
         }
 
         // 此时 target 比所有数都大，返回 -1
-        // 由于这里 right 初始化为 nums.length，所以 left 变量的取值区间是闭区间 [0, nums.length]，
+        // 由于这里 right 初始化为 nums.length，所以 left 变量的取值区间
+        // 是闭区间 [0, nums.length]，
         // 那么我们在检查 nums[left] 之前需要额外判断一下，防止索引越界
         if (left == nums.length) {
             return -1;

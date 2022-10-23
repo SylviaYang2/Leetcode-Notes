@@ -20,6 +20,9 @@ class Solution {
         int ans = 0;
         while (left < right) {
             int mid = left + (right - left) / 2;
+
+            // 如果这个整数的平方 恰好等于 输入整数，那么我们就找到了这个整数； 如果这个整数的平方 严格大于 输入整数，那么这个整数肯定不是我们要找的那个数；
+            // 如果这个整数的平方 严格小于 输入整数，那么这个整数 可能 是我们要找的那个数（重点理解这句话）。
             if (mid <= x / mid) { // prevent overflow
                 left = mid + 1;
                 ans = mid;
